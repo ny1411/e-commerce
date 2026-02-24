@@ -18,6 +18,34 @@ class FrontController
     {
         require_once __DIR__ . "/../users/views/ViewProduct.view.inc.php";
     }
+    public static function adminProducts()
+    {
+        require_once __DIR__ . "/../admin/views/ViewProducts.view.inc.php";
+    }
+    public static function adminProduct($productId)
+    {
+        require_once __DIR__ . "/../admin/views/ViewProduct.view.inc.php";
+    }
+    public static function adminCreateProduct()
+    {
+        require_once __DIR__ . "/../admin/views/CreateProduct.view.inc.php";
+    }
+    public static function adminDeleteProduct($productId)
+    {
+        require_once __DIR__ . "/../admin/views/DeleteProduct.view.inc.php";
+    }
+    public static function adminEditProduct($productId)
+    {
+        require_once __DIR__ . "/../admin/views/EditProduct.view.inc.php";
+    }
+    public static function users()
+    {
+        require_once __DIR__ . "/../admin/views/ViewUsers.view.inc.php";
+    }
+    public static function user($userId)
+    {
+        require_once __DIR__ . "/../admin/views/ViewUser.view.inc.php";
+    }
     public static function cart()
     {
         require_once __DIR__ . "/../users/views/Cart.view.inc.php";
