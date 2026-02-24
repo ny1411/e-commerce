@@ -2,7 +2,7 @@
 
 require_once __DIR__ . "/../core/ViewProducts.inc.php";
 
-$product = $_SESSION['all_products'][0] ?? null;
+$product = $_SESSION['all_products'][0] ?? null;        // must change this
 
 ?>
 

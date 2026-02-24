@@ -47,7 +47,7 @@ $products = $_SESSION['all_products'] ?? [];
                             <img src="data:image/jpeg;base64,<?= base64_encode($item['image_blob']) ?>" width="150">
                         </td>
                         <td>
-                            <form action="../../app/admin/core/EditProduct.inc.php" method="POST" style="display:inline">
+                            <a href="../admin/product/<?= $item['id'] ?>/edit" style="display:inline">
                                 <input type="hidden" name="id" value="<?= $item['id'] ?>">
                                 <button class="edit-btn">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -58,7 +58,7 @@ $products = $_SESSION['all_products'] ?? [];
                                             d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z" />
                                     </svg>
                                 </button>
-                            </form>
+                            </a>
 
                             <form action="../../app/admin/core/DeleteProduct.inc.php" method="POST" style="display:inline">
                                 <input type="hidden" name="id" value="<?= $item['id'] ?>">
