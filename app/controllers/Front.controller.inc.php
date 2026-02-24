@@ -42,10 +42,6 @@ class FrontController
     {
         require_once __DIR__ . "/../admin/views/ViewUsers.view.inc.php";
     }
-    public static function user($userId)
-    {
-        require_once __DIR__ . "/../admin/views/ViewUser.view.inc.php";
-    }
     public static function cart()
     {
         require_once __DIR__ . "/../users/views/Cart.view.inc.php";

@@ -13,7 +13,6 @@ header("Content-Type: text/html; charset=UTF-8");
 $router->add('GET', '/', [$frontController, 'login']);
 $router->add('GET', '/register', [$frontController, 'register']);
 $router->add('GET', '/admin/users', [$frontController, 'users']);
-$router->add('GET', '/admin/user/(\d+)', [$frontController, 'user']);
 $router->add('GET', '/admin/products', [$frontController, 'adminProducts']);
 $router->add('GET', '/admin/product/(\d+)', [$frontController, 'adminProduct']);
 $router->add('GET', '/admin/product/create', [$frontController, 'adminCreateProduct']);
