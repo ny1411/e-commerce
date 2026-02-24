@@ -1,5 +1,8 @@
 <?php
 
+require_once __DIR__ . "/../../core/Dbh.inc.php";
+require_once __DIR__ . "/../interfaces/CreateProductInterface.inc.php";
+
 class CreateProduct extends Dbh implements CreateProductInterface
 {
     public function createProduct(
@@ -21,9 +24,9 @@ class CreateProduct extends Dbh implements CreateProductInterface
             $stmt->bindParam(':productCategory', $productCategory);
             $stmt->bindParam(':productPrice', $productPrice);
             $stmt->bindParam(':productSpecialPrice', $productSpecialPrice);
-            $stmt->bindParam(':productImageBlob', $productImage);
+            $stmt->bindValue(':productImageBlob', $productImage, PDO::PARAM_LOB);
 
-            return $stmt->execute();
+            $stmt->execute();
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
         }

@@ -1,5 +1,8 @@
 <?php
 
+require_once __DIR__ . "/../../core/Dbh.inc.php";
+require_once __DIR__ . "/../interfaces/EditProductInterface.inc.php";
+
 class EditProduct extends Dbh implements EditProductInterface
 {
     public function editProduct(

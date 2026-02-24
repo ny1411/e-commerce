@@ -1,6 +1,9 @@
 <?php
 
-class ViewProduct extends Dbh implements ViewProductsInterface
+require_once __DIR__ . "/../../core/Dbh.inc.php";
+require_once __DIR__ . "/../interfaces/ViewProductsInterface.inc.php";
+
+class ViewProduct extends Dbh implements ViewProductsAdminInterface
 {
     public function getAllProducts()
     {

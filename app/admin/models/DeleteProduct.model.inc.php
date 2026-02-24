@@ -1,5 +1,8 @@
 <?php
 
+require_once __DIR__ . "/../../core/Dbh.inc.php";
+require_once __DIR__ . "/../interfaces/DeleteProductInterface.inc.php";
+
 class DeleteProduct extends Dbh implements DeleteProductInterface
 {
     public function deleteProduct($productId)
