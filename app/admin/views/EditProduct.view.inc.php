@@ -2,7 +2,19 @@
 
 require_once __DIR__ . "/../core/ViewProducts.inc.php";
 
-$product = $_SESSION['all_products'][0];        // must change this
+$product = $_SESSION['all_products'] ?? null;
+
+// Get product id from current URL path
+$url = $_SERVER['REQUEST_URI'];
+
+$segments = explode('/', trim($url, '/'));
+$idInURL = $segments[6] ?? null;
+
+foreach ($_SESSION['all_products'] as $product) {
+    if ($product['id'] == $idInURL) {
+        $productId = $product["id"];
+    }
+}
 
 if (!$product) {
     echo "No product selected for editing.";
@@ -40,7 +52,7 @@ if (!$product) {
             </div>
 
             <form action="../../../../app/admin/core/EditProduct.inc.php" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="id" value="<?= $product['id'] ?>">
+                <input type="hidden" name="id" value="<?= $productId ?>">
 
                 <div class="mb-3">
                     <label for="name" class="form-label fw-semibold">Product Name</label>
