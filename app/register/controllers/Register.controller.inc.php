@@ -13,12 +13,14 @@ class RegisterController extends Register
             $this->errors['empty_inputs'] = "Fill in all the inputs.";
             $_SESSION['errors_login'] = $this->errors;
             header("Location: ../../../public");
+            exit();
         }
 
         if ($this->does_user_exist($username, $email)) {
             $this->errors['user_exist'] = "User already exists.";
             $_SESSION['errors_login'] = $this->errors;
             header("Location: ../../../public");
+            exit();
         }
 
         $this->set_user($username, $email, $pwd, $isAdmin);
