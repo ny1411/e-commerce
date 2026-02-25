@@ -33,4 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location: ../../../public/cart");
         exit();
     }
+    if ($action === "decrement") {
+        $cartController->removeFromCart($userId, $productId);
+        header("Location: ../../../public/cart");
+        exit();
+    }
 }
