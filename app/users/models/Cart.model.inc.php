@@ -19,6 +19,26 @@ class Cart extends Dbh implements CartInterface
             die("Error: " . $e->getMessage());
         }
     }
+    public function getAllProducts($productIds)
+    {
+        try {
+            if (empty($productIds)) {
+                return [];
+            }
+
+            $placeholders = implode(',', array_fill(0, count($productIds), '?'));
+
+            $query = "SELECT * FROM products WHERE id IN ($placeholders)";
+
+            $stmt = $this->connect()->prepare($query);
+            $stmt->execute($productIds);
+
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+    }
     public function addProductToCart($userId, $productId, $quantity)
     {
         try {
