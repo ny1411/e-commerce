@@ -14,6 +14,9 @@ require_once __DIR__ . "/../core/ViewProducts.inc.php";
 </head>
 
 <body>
+    <a href="../public/cart" type="submit">
+        <button>Go to Cart</button>
+    </a>
     <main>
         <h1>All Products</h1>
         <table id="all-products">
