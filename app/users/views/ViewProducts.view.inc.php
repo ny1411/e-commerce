@@ -1,7 +1,6 @@
 <?php
 
 require_once __DIR__ . "/../core/ViewProducts.inc.php";
-require_once __DIR__ . "/../core/Cart.inc.php";
 
 ?>
 
@@ -67,6 +66,9 @@ require_once __DIR__ . "/../core/Cart.inc.php";
             </tbody>
         </table>
     </main>
+    <?php
+    require_once __DIR__ . "/../core/Cart.inc.php";
+    ?>
 </body>
 
 </html>
