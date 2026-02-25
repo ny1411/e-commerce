@@ -8,4 +8,8 @@ class ViewProductsController extends ViewProducts
     {
         return $this->getAllProducts();
     }
+    public function fetchProduct($productId)
+    {
+        return $this->getProductById($productId);
+    }
 }

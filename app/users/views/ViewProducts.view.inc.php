@@ -33,19 +33,29 @@ require_once __DIR__ . "/../core/ViewProducts.inc.php";
                 <?php foreach ($products as $item): ?>
                     <tr>
                         <td>
-                            <?= htmlspecialchars($item['name']) ?>
+                            <a href="../public/product/<?= $item['id'] ?>">
+                                <?= htmlspecialchars($item['name']) ?>
+                            </a>
                         </td>
                         <td>
-                            <?= htmlspecialchars($item['description']) ?>
+                            <a href="../public/product/<?= $item['id'] ?>">
+                                <?= htmlspecialchars($item['description']) ?>
+                            </a>
                         </td>
                         <td>
-                            <?= htmlspecialchars($item['price']) ?>
+                            <a href="../public/product/<?= $item['id'] ?>">
+                                <?= htmlspecialchars($item['price']) ?>
+                            </a>
                         </td>
                         <td>
-                            <?= htmlspecialchars($item['special_price']) ?>
+                            <a href="../public/product/<?= $item['id'] ?>">
+                                <?= htmlspecialchars($item['special_price']) ?>
+                            </a>
                         </td>
                         <td>
-                            <img src="data:image/jpeg;base64,<?= base64_encode($item['image_blob']) ?>" width="150">
+                            <a href="../public/product/<?= $item['id'] ?>">
+                                <img src="data:image/jpeg;base64,<?= base64_encode($item['image_blob']) ?>" width="150">
+                            </a>
                         </td>
                         <td>
                             <form action="../app/users/core/Cart.inc.php" method="post">

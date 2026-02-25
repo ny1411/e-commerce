@@ -8,6 +8,10 @@ class CartController extends Cart
     {
         return $this->getAllProductsInCart($userId);
     }
+    public function getProductsFromProductId($productId)
+    {
+        $this->getAllProducts($productId);
+    }
     public function addToCart($userId, $productId, $quantity)
     {
         $this->addProductToCart($userId, $productId, $quantity);
