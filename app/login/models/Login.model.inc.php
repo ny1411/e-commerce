@@ -59,6 +59,22 @@ class Login extends Dbh implements LoginInterface
         }
     }
 
+    public function is_admin($usernameOrEmail)
+    {
+        try {
+            $query = "SELECT user_role from users WHERE username = :usernameOrEmail OR email = :usernameOrEmail";
+
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":usernameOrEmail", $usernameOrEmail);
+            $stmt->execute();
+
+            $result = $stmt->fetchColumn();
+            return ($result == 'admin') ? true : false;
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+    }
+
     public function set_user($username)
     {
         $_SESSION['username'] = $username;
@@ -67,5 +83,9 @@ class Login extends Dbh implements LoginInterface
     public function set_user_id($userId)
     {
         $_SESSION['user_id'] = $userId;
+    }
+    public function set_admin()
+    {
+        $_SESSION['is_admin'] = true;
     }
 }

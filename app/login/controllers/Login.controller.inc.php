@@ -29,9 +29,15 @@ class LoginController extends Login
             exit();
         }
 
+
         $userId = $this->get_id($usernameOrEmail);
         $this->set_user_id($userId);
         $this->set_user($usernameOrEmail);
+        if ($this->is_admin($usernameOrEmail)) {
+            $this->set_admin();
+            header("Location: ../../../public/admin/products");
+            exit();
+        }
 
         header("Location: ../../../public/products");
     }
