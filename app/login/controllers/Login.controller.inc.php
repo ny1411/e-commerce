@@ -1,6 +1,6 @@
 <?php
 
-require_once '../models/Login.model.inc.php';
+require_once __DIR__ . '/../models/Login.model.inc.php';
 
 class LoginController extends Login
 {
@@ -9,36 +9,43 @@ class LoginController extends Login
     public function login($usernameOrEmail, $pwd)
     {
         if ($this->is_empty($usernameOrEmail, $pwd)) {
-            $this->errors['empty_inputs'] = "Fill in all the inputs.";
-            $_SESSION['errors_login'] = $this->errors;
-            header("Location: ../../../public");
-            exit();
+            return [
+                'status' => false,
+                'code' => 400,
+                'message' => 'Fill in all the inputs.'
+            ];
         }
 
         if (!$this->does_user_exist($usernameOrEmail)) {
-            $this->errors['user_not_exist'] = "User does not exist.";
-            $_SESSION['errors_login'] = $this->errors;
-            header("Location: ../../../public");
-            exit();
+            return [
+                'status' => false,
+                'code' => 404,
+                'message' => 'User does not exist.'
+            ];
         }
 
         if (!$this->verify_password($usernameOrEmail, $pwd)) {
-            $this->errors['incorrect_details'] = "Enter a valid username or password.";
-            $_SESSION['errors_login'] = $this->errors;
-            header("Location: ../../../public");
-            exit();
+            return [
+                'status' => false,
+                'code' => 401,
+                'message' => 'Enter a valid username or password.'
+            ];
         }
-
 
         $userId = $this->get_id($usernameOrEmail);
         $this->set_user_id($userId);
-        $this->set_user($usernameOrEmail);
-        if ($this->is_admin($usernameOrEmail)) {
+
+        $isAdmin = $this->is_admin($usernameOrEmail);
+        if ($isAdmin) {
             $this->set_admin();
-            header("Location: ../../../public/admin/products");
-            exit();
         }
 
-        header("Location: ../../../public/products");
+        return [
+            'status' => true,
+            'code' => 200,
+            'userId' => $userId,
+            'username' => $usernameOrEmail,
+            'isAdmin' => $isAdmin
+        ];
     }
 }

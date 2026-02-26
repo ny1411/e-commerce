@@ -3,14 +3,17 @@
 use App\Core\Router;
 require_once '../app/core/Router.inc.php';
 require_once '../app/controllers/Front.controller.inc.php';
+require_once '../app/controllers/Api.controller.inc.php';
 require_once '../app/config/session.config.inc.php';
 require_once '../app/core/Dbh.inc.php';
 
 $router = new Router();
 $frontController = new FrontController();
+$apiLoginController = new ApiLoginController();
 header("Content-Type: text/html; charset=UTF-8");
 
 $router->add('GET', '/', [$frontController, 'login']);
+$router->add('POST', '/api/login', [$apiLoginController, 'login']);
 $router->add('GET', '/register', [$frontController, 'register']);
 $router->add('GET', '/admin/users', [$frontController, 'users']);
 $router->add('GET', '/admin/products', [$frontController, 'adminProducts']);

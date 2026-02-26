@@ -24,7 +24,7 @@ require_once "../app/config/session.config.inc.php";
                 <p class="text-muted">Please enter your details to login</p>
             </div>
 
-            <form action="../app/login/core/Login.inc.php" method="post">
+            <form id="loginForm">
                 <div class="mb-4">
                     <label for="usernameOrEmail" class="form-label fw-semibold">Username or Email</label>
                     <input type="text" id="usernameOrEmail" name="usernameOrEmail" class="form-control"
@@ -55,9 +55,48 @@ require_once "../app/config/session.config.inc.php";
             </form>
         </div>
     </main>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("#loginForm");
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault();
+
+                const usernameOrEmail = document.querySelector("#usernameOrEmail").value;
+                const pwd = document.querySelector("#pwd").value;
+
+                try {
+                    const res = await fetch('api/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ usernameOrEmail, pwd })
+                    });
+                    console.log("1");
+
+                    const data = await res.json();
+
+                    if (!res.ok) {
+                        console.log(data);
+                        alert(data.message);
+                        return;
+                    }
+
+                    const BASE_URL = "<?php echo rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\'); ?>";
+                    const targetPath = BASE_URL + (data.isAdmin ? '/admin/products' : '/products');
+
+                    window.location.href = encodeURI(targetPath);
+
+                } catch (err) {
+                    console.error(err);
+                    alert('Something went wrong. Try again.');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

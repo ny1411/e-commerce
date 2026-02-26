@@ -1,7 +1,7 @@
 <?php
 
-require_once '../../core/Dbh.inc.php';
-require_once '../interfaces/LoginInterface.inc.php';
+require_once __DIR__ . '/../../core/Dbh.inc.php';
+require_once __DIR__ . '/../interfaces/LoginInterface.inc.php';
 
 class Login extends Dbh implements LoginInterface
 {
