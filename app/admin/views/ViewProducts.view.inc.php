@@ -25,9 +25,16 @@ $products = $_SESSION['all_products'] ?? [];
                 <h1 class="fw-bold">Manage Products</h1>
                 <p class="text-muted small">Update inventory, prices, and product details.</p>
             </div>
-            <a href="../admin/product/create" class="btn btn-warning rounded-pill px-4 py-2 fw-bold shadow-sm btn-cart">
-                + Add Product
-            </a>
+            <div>
+                <a href="../admin/product/create"
+                    class="btn btn-warning rounded-pill px-4 py-2 fw-bold shadow-sm btn-cart">
+                    + Add Product
+                </a>
+                <a href="../../app/core/Logout.inc.php" type="submit"
+                    class="btn btn-outline-danger btn-lg text-dark rounded-pill px-4">
+                    Logout
+                </a>
+            </div>
         </div>
 
         <div class="card manage-products-card shadow-sm overflow-hidden">

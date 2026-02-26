@@ -20,9 +20,16 @@ require_once __DIR__ . "/../core/ViewProducts.inc.php";
     <main class="container py-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 class="fw-bold">All Products</h1>
-            <a href="../public/cart" type="submit" class="btn btn-outline-warning btn-lg text-dark rounded-pill px-4">
-                Go to Cart
-            </a>
+            <div>
+                <a href="../public/cart" type="submit"
+                    class="btn btn-outline-warning btn-lg text-dark rounded-pill px-4">
+                    Go to Cart
+                </a>
+                <a href="../app/core/Logout.inc.php" type="submit"
+                    class="btn btn-outline-danger btn-lg text-dark rounded-pill px-4">
+                    Logout
+                </a>
+            </div>
         </div>
         <div class="row g-4">
             <?php foreach ($products as $item): ?>
