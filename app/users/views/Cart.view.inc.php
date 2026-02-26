@@ -130,14 +130,14 @@ foreach ($productsIndexed as $product) {
                                     <td class="text-end px-4">
                                         <?php
                                         $subtotal = $product['price'] * $product['quantity'];
+                                        $totalAfterDiscount = $subtotal;
                                         if ($subtotal > 2000) {
-                                            $subtotal *= 0.90;
+                                            $totalAfterDiscount = $subtotal * 0.90;
                                         }
-                                        $itemTotalWithTax = $subtotal * 1.18;
-                                        $totalPrice += $itemTotalWithTax;
+                                        $taxAmount = $totalAfterDiscount * 0.18;
+                                        $grandTotal = $totalAfterDiscount + $taxAmount;
                                         ?>
-                                        <span
-                                            class="fw-bold text-primary">₹<?= number_format($itemTotalWithTax, 2) ?></span>
+                                        <span class="fw-bold text-primary">₹<?= number_format($subtotal, 2) ?></span>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -159,17 +159,23 @@ foreach ($productsIndexed as $product) {
                 <div class="card summary-card p-4 shadow-sm">
                     <h4 class="fw-bold mb-4">Order Summary</h4>
                     <div class="d-flex justify-content-between mb-2">
-                        <span>Subtotal (incl. discounts)</span>
-                        <span>₹<?= number_format($totalPrice / 1.18, 2) ?></span>
+                        <span>Subtotal</span>
+                        <span>₹
+                            <?= number_format($subtotal, 2) ?>
+                        </span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Discount</span>
+                        <span>₹<?= number_format($subtotal * 0.10, 2) ?></span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
                         <span>Estimated Tax (18%)</span>
-                        <span>₹<?= number_format($totalPrice - ($totalPrice / 1.18), 2) ?></span>
+                        <span>₹<?= number_format($taxAmount, 2) ?></span>
                     </div>
                     <hr>
                     <div class="d-flex justify-content-between mb-4">
                         <span class="h5 fw-bold">Grand Total</span>
-                        <span class="h5 fw-bold text-primary">₹<?= number_format($totalPrice, 2) ?></span>
+                        <span class="h5 fw-bold text-primary">₹<?= number_format($grandTotal, 2) ?></span>
                     </div>
                     <button class="btn btn-warning btn-lg w-100 rounded-pill py-3 fw-bold btn-cart">
                         Proceed to Buy
