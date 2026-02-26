@@ -65,12 +65,12 @@ $products = $_SESSION['all_products'] ?? [];
                                     </div>
                                 </td>
                                 <td class="fw-semibold">
-                                    $<?= number_format($item['price'], 2) ?>
+                                    ₹<?= number_format($item['price'], 2) ?>
                                 </td>
                                 <td>
                                     <?php if ($item['special_price']): ?>
                                         <span class="badge bg-light text-success border border-success rounded-pill px-2">
-                                            $<?= number_format($item['special_price'], 2) ?>
+                                            ₹<?= number_format($item['special_price'], 2) ?>
                                         </span>
                                     <?php else: ?>
                                         <span class="text-muted small">None</span>

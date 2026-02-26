@@ -77,7 +77,7 @@ if (!$product) {
                     <div class="col-md-6 mb-3">
                         <label for="price" class="form-label fw-semibold">Regular Price ($)</label>
                         <div class="input-group">
-                            <span class="input-group-text bg-light">$</span>
+                            <span class="input-group-text bg-light">₹</span>
                             <input type="number" id="price" name="price" class="form-control" step="0.01"
                                 value="<?= $product['price'] ?>" required>
                         </div>
@@ -86,7 +86,7 @@ if (!$product) {
                     <div class="col-md-6 mb-3">
                         <label for="special_price" class="form-label fw-semibold">Special Price ($)</label>
                         <div class="input-group">
-                            <span class="input-group-text bg-primary text-white">$</span>
+                            <span class="input-group-text bg-primary text-white">₹</span>
                             <input type="number" id="special_price" name="special_price" class="form-control"
                                 step="0.01" value="<?= $product['special_price'] ?>">
                         </div>

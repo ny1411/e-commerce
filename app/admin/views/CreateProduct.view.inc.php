@@ -52,18 +52,18 @@
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label for="price" class="form-label fw-semibold">Regular Price ($)</label>
+                        <label for="price" class="form-label fw-semibold">Regular Price (₹)</label>
                         <div class="input-group">
-                            <span class="input-group-text bg-light">$</span>
+                            <span class="input-group-text bg-light">₹</span>
                             <input type="number" id="price" name="product_price" class="form-control" step="0.01"
                                 placeholder="0.00" required>
                         </div>
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label for="specialPrice" class="form-label fw-semibold">Special Price ($)</label>
+                        <label for="specialPrice" class="form-label fw-semibold">Special Price (₹)</label>
                         <div class="input-group border-primary">
-                            <span class="input-group-text bg-primary text-white">$</span>
+                            <span class="input-group-text bg-primary text-white">₹</span>
                             <input type="number" id="specialPrice" name="product_special_price"
                                 class="form-control border-primary" step="0.01" placeholder="0.00" required>
                         </div>
