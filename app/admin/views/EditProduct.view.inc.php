@@ -13,6 +13,7 @@ $idInURL = $segments[6] ?? null;
 foreach ($_SESSION['all_products'] as $product) {
     if ($product['id'] == $idInURL) {
         $productId = $product["id"];
+        break;
     }
 }
 
